@@ -3,7 +3,7 @@
 const projects = [
   {
     id: 1,
-    title: "Site Portfolio MMI (Ce Projet)",
+    title: "Site Portfolio MMI",
     slug: "portfolio-mmi", // Important pour l'URL
     description: "Mon site personnel pour...",
     category: "Web Dev",
@@ -24,6 +24,30 @@ const projects = [
     githubUrl: "...",
     liveUrl: "...",
     isFeatured: false,
+  },
+  {
+    id: 3,
+    title: "Another Project",
+    slug: "another-project",
+    description: "Description of another project...",
+    category: "Web Dev",
+    techs: ["React", "Node.js"],
+    year: 2023,
+    githubUrl: "...",
+    liveUrl: "...",
+    isFeatured: false,
+  },
+  {
+    id: 4,
+    title: "Featured Project",
+    slug: "featured-project",
+    description: "Description of the featured project...",
+    category: "Web Dev",
+    techs: ["React", "Node.js"],
+    year: 2023,
+    githubUrl: "...",
+    liveUrl: "...",
+    isFeatured: true,
   },
   // ... vos autres projets
 ];
