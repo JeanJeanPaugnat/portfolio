@@ -7,11 +7,17 @@ const projects = [
     slug: "portfolio-mmi", // Important pour l'URL
     description: "Mon site personnel pour...",
     category: "Web Dev",
-    techs: ["Next.js", "React", "Tailwind CSS", "GSAP"],
+    skills: {
+      languages: ["JavaScript", "HTML", "CSS"],
+      frameworks: ["React", "Node.js"],
+      tools: ["Git", "VSCode"]
+    },
     year: 2025,
     githubUrl: "...",
+    about: "Details about the portfolio project...",
     liveUrl: "...",
     isFeatured: true,
+    team: ["Alice", "Bob", "Charlie"]
   },
   {
     id: 2,
@@ -19,11 +25,16 @@ const projects = [
     slug: "projet-mmi-synthese",
     description: "Description de votre projet...",
     category: "Systèmes Interactifs",
-    techs: ["Vanilla JS", "GSAP", "PHP"],
+    skills: {
+      languages: ["JavaScript", "HTML", "CSS"],
+      frameworks: ["React", "Node.js"],
+      tools: []
+    },
     year: 2024,
     githubUrl: "...",
     liveUrl: "...",
     isFeatured: false,
+    team: ["Jean Dupont", "Marie Curie", "Albert Einstein"]
   },
   {
     id: 3,
@@ -31,11 +42,17 @@ const projects = [
     slug: "another-project",
     description: "Description of another project...",
     category: "Web Dev",
-    techs: ["React", "Node.js"],
+    skills: {
+      languages: ["JavaScript", "HTML", "CSS"],
+      frameworks: ["React", "Node.js"],
+      tools: ["Git"]
+    },
     year: 2023,
     githubUrl: "...",
     liveUrl: "...",
     isFeatured: false,
+    about: "Details about another project...",
+    team: ["Alice", "Bob", "Charlie"]
   },
   {
     id: 4,
@@ -43,11 +60,17 @@ const projects = [
     slug: "featured-project",
     description: "Description of the featured project...",
     category: "Web Dev",
-    techs: ["React", "Node.js"],
+    skills: {
+      languages: ["JavaScript", "HTML", "CSS"],
+      frameworks: ["React", "Node.js"],
+      tools: ["Git", "Figma"]
+    },
     year: 2023,
     githubUrl: "...",
     liveUrl: "...",
+    about: "Details about the featured project...",
     isFeatured: true,
+    team: ["Alice", "Bob", "Charlie"]
   },
   // ... vos autres projets
 ];
