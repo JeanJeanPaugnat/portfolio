@@ -1,15 +1,47 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --blue-primary: #0059FF;
+  /* Couleurs principales du thème */
+  --background: #ffffff;     /* Blanc pour les arrière-plans principaux */
+  --foreground: #171717;     /* Noir foncé pour les textes et backgrounds */
+  
+  /* Couleurs d'accent */
+  --blue-primary: #0059FF;   /* Bleu principal pour les CTAs */
+  --blue-hover: #0047cc;     /* Bleu plus foncé pour les hovers */
+  
+  /* Couleurs neutres */
+  --neutral-900: #1a1a1a;    /* Gris très foncé pour les textes */
+  --gray-500: #6b7280;       /* Gris moyen pour les textes secondaires */
+  --black: #000000;          /* Noir pur */
+  --white: #ffffff;          /* Blanc pur */
+  
+  /* Couleurs avec transparence */
+  --white-opacity-5: rgba(255, 255, 255, 0.05);
+  --white-opacity-20: rgba(255, 255, 255, 0.2);
+  --white-opacity-40: rgba(255, 255, 255, 0.4);
+  --white-opacity-50: rgba(255, 255, 255, 0.5);
+  
+  /* Couleurs d'accent supplémentaires */
+  --amber-300: #fcd34d;      /* Jaune pour les images placeholders */
+  --amber-500: #f59e0b;      /* Jaune plus foncé */
+  --border-gray: #e5e7eb;    /* Gris pour les bordures */
+  
+  /* Alias pour faciliter l'usage */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-blue-primary: var(--blue-primary);
+  --color-blue-hover: var(--blue-hover);
+  --color-neutral-900: var(--neutral-900);
+  --color-gray-500: var(--gray-500);
+  --color-amber-300: var(--amber-300);
+  --color-amber-500: var(--amber-500);
+  --color-black: var(--black);
+  --color-white: var(--white);
+  
+  /* Polices */
   --font-sans: 'Funnel Display', sans-serif;
   --font-serif: 'Crimson Text', serif;
   --font-mono: 'Funnel Display', sans-serif;
-  --color-blue-primary: var(--blue-primary);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -50,7 +82,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0047cc;
+  background: var(--blue-hover);
 }
 
 /* Ensure text doesn't overflow on small screens */
@@ -59,3 +91,28 @@ body {
   overflow-wrap: break-word;
   hyphens: auto;
 }
+
+/* Utility classes for color system */
+.bg-primary { background-color: var(--background); }
+.bg-secondary { background-color: var(--foreground); }
+.bg-blue { background-color: var(--blue-primary); }
+.bg-blue-hover { background-color: var(--blue-hover); }
+.bg-neutral { background-color: var(--neutral-900); }
+.bg-white-5 { background-color: var(--white-opacity-5); }
+.bg-white-20 { background-color: var(--white-opacity-20); }
+
+.text-primary { color: var(--background); }
+.text-secondary { color: var(--foreground); }
+.text-blue { color: var(--blue-primary); }
+.text-blue-hover { color: var(--blue-hover); }
+.text-neutral { color: var(--neutral-900); }
+.text-white { color: var(--white); }
+.text-black { color: var(--black); }
+.text-gray { color: var(--gray-500); }
+.text-white-50 { color: var(--white-opacity-50); }
+
+.border-primary { border-color: var(--background); }
+.border-secondary { border-color: var(--foreground); }
+.border-blue { border-color: var(--blue-primary); }
+.border-white-20 { border-color: var(--white-opacity-20); }
+.border-white-40 { border-color: var(--white-opacity-40); }

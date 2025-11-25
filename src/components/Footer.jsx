@@ -1,12 +1,18 @@
 'use client';
 
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
 
 // Footer scroll text component
 function FooterScrollText() {
   const targetRef = useRef(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Ensure component is hydrated on client side
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Capturer le scroll progress pendant que l'élément est dans la vue
   const { scrollYProgress } = useScroll({
@@ -18,6 +24,22 @@ function FooterScrollText() {
   // Le texte se déplace de droite à gauche pendant le scroll
   const x = useTransform(scrollYProgress, [0, 1], ["30%", "-30%"]);
 
+  // Render static version during SSR, animated version after hydration
+  if (!isClient) {
+    return (
+      <section 
+        ref={targetRef}
+        className="py-8 sm:py-12 md:py-16 flex justify-center overflow-hidden px-4 relative"
+      >
+        <h3 
+          className="font-black whitespace-nowrap leading-[0.2] sm:leading-[0.3] text-[clamp(3rem,15vw,20rem)] sm:text-[clamp(5rem,20vw,25rem)] md:text-[clamp(8rem,25vw,30rem)] lg:text-[clamp(12rem,30vw,35rem)]"
+        >
+          JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT /
+        </h3>
+      </section>
+    );
+  }
+
   return (
     <section 
       ref={targetRef}
@@ -25,9 +47,7 @@ function FooterScrollText() {
     >
       <motion.h3 
         style={{ x }}
-        className="font-black whitespace-nowrap leading-[0.2] sm:leading-[0.3]
-                  text-[clamp(3rem,15vw,20rem)] sm:text-[clamp(5rem,20vw,25rem)] 
-                  md:text-[clamp(8rem,25vw,30rem)] lg:text-[clamp(12rem,30vw,35rem)]"
+        className="font-black whitespace-nowrap leading-[0.2] sm:leading-[0.3] text-[clamp(3rem,15vw,20rem)] sm:text-[clamp(5rem,20vw,25rem)] md:text-[clamp(8rem,25vw,30rem)] lg:text-[clamp(12rem,30vw,35rem)]"
       >
         JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT /
       </motion.h3>

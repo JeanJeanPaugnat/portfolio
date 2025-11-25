@@ -14,7 +14,7 @@ export default function ProjetsPage() {
           Projects
         </h4>
         <p className='font-serif max-w-xl'>
-          Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna. Pellentesque sit amet sapien. Lorem ipsum dolor sit amet consectetur adipiscing elit Ut et massa mi. Aliquam in hendrerit urna.
+          Here is a selection of my projects showcasing my skills and experience in web development. Each project reflects my commitment to quality, innovation, and user-centric experience.
         </p>
       </div>
       <div className=''>
