@@ -2,19 +2,19 @@
 
 import React from 'react';
 
-// En-tête simplifié et responsive
-export default function Header() {
+export function NavBar() {
   return (
-    <header className="w-full fixed top-0 left-0 z-20 bg-foreground">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+    <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
         <div className="text-background text-lg md:text-xl font-bold tracking-wide">JEAN PAUGNAT</div>
 
         {/* Navigation: visible à partir de md */}
         <nav className="hidden md:flex gap-8 items-center text-base capitalize">
           <a href="/" className="hover:underline">home</a>
           <a href="/projets" className="hover:underline">work</a>
-          <a href="/about" className="hover:underline">about me</a>
-          <a href="/contact" className="hover:underline">contact</a>
+          <a href="/about" className="hover:underline">about</a>
+              <button className="bg-blue-primary text-background px-3 py-2 rounded-lg font-serif font-semibold italic uppercase w-fit">
+                Let's talk
+              </button>
         </nav>
 
         {/* Hamburger: visible sur petits écrans */}
@@ -28,6 +28,16 @@ export default function Header() {
           </svg>
         </button>
       </div>
+  );
+}
+
+// En-tête simplifié et responsive
+export default function Header() {
+  return (
+    <header className="w-full fixed top-0 left-0 z-20 bg-foreground">
+      
+      <NavBar />
+
     </header>
   );
 }

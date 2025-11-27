@@ -8,20 +8,45 @@ import ProjectCard from '@/components/ProjectCard'; // Importez votre nouveau co
 
 export default function ProjetsPage() {
   return (
-    <main className="container mx-auto px-4 py-12">
-      <h1 className="text-5xl font-extrabold text-center mb-12">
-        Mes Projets
-      </h1>
-      
-      {/* Nous utilisons .map() pour boucler sur nos données 
-        et rendre un ProjectCard pour chaque projet.
-      */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          // "key" est obligatoire en React lors d'un .map()
-          <ProjectCard key={project.id} project={project} />
-        ))}
+    <section className=' px-28 py-32 flex flex-col justify-end gap-32 min-h-screen'>
+      <div className='flex items-center justify-between flex-wrap'>
+        <h4 className='font-serif italic text-9xl uppercase'>
+          Projects
+        </h4>
+        <p className='font-serif max-w-xl'>
+          Here is a selection of my projects showcasing my skills and experience in web development. Each project reflects my commitment to quality, innovation, and user-centric experience.
+        </p>
       </div>
-    </main>
+      <div className=''>
+        <div className='grid grid-cols-[1fr_1fr_1fr_200px] px-2.5 mb-6'>
+          <div className='flex items-center gap-4'>
+            <p className=' text-2xl'>Name</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+              <path d="M4.99219 0.219666C5.28509 -0.0732334 5.75984 -0.0732334 6.05273 0.219666L10.8252 4.99213C11.1181 5.28503 11.1181 5.75977 10.8252 6.05267C10.5323 6.34535 10.0575 6.3455 9.76465 6.05267L6.27246 2.56049V15.4394L9.76465 11.9472C10.0575 11.6543 10.5323 11.6544 10.8252 11.9472C11.1181 12.2401 11.1181 12.7149 10.8252 13.0078L6.05273 17.7802C5.75983 18.073 5.28506 18.0731 4.99219 17.7802L0.219727 13.0078C-0.0731504 12.7149 -0.0731067 12.2401 0.219727 11.9472C0.512625 11.6543 0.987375 11.6543 1.28027 11.9472L4.77246 15.4394V2.56049L1.28027 6.05267C0.987388 6.34542 0.512588 6.34546 0.219727 6.05267C-0.0731295 5.75982 -0.0730437 5.28504 0.219727 4.99213L4.99219 0.219666Z" fill="#0059FF"/>
+            </svg>
+          </div>
+          <div className='flex items-center gap-4'>
+            <p className=' text-2xl'>Category</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+              <path d="M4.99219 0.219666C5.28509 -0.0732334 5.75984 -0.0732334 6.05273 0.219666L10.8252 4.99213C11.1181 5.28503 11.1181 5.75977 10.8252 6.05267C10.5323 6.34535 10.0575 6.3455 9.76465 6.05267L6.27246 2.56049V15.4394L9.76465 11.9472C10.0575 11.6543 10.5323 11.6544 10.8252 11.9472C11.1181 12.2401 11.1181 12.7149 10.8252 13.0078L6.05273 17.7802C5.75983 18.073 5.28506 18.0731 4.99219 17.7802L0.219727 13.0078C-0.0731504 12.7149 -0.0731067 12.2401 0.219727 11.9472C0.512625 11.6543 0.987375 11.6543 1.28027 11.9472L4.77246 15.4394V2.56049L1.28027 6.05267C0.987388 6.34542 0.512588 6.34546 0.219727 6.05267C-0.0731295 5.75982 -0.0730437 5.28504 0.219727 4.99213L4.99219 0.219666Z" fill="#0059FF"/>
+            </svg>
+          </div>
+          <div className='flex items-center gap-4'>
+            <p className=' text-2xl'>Year Realeased</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+              <path d="M4.99219 0.219666C5.28509 -0.0732334 5.75984 -0.0732334 6.05273 0.219666L10.8252 4.99213C11.1181 5.28503 11.1181 5.75977 10.8252 6.05267C10.5323 6.34535 10.0575 6.3455 9.76465 6.05267L6.27246 2.56049V15.4394L9.76465 11.9472C10.0575 11.6543 10.5323 11.6544 10.8252 11.9472C11.1181 12.2401 11.1181 12.7149 10.8252 13.0078L6.05273 17.7802C5.75983 18.073 5.28506 18.0731 4.99219 17.7802L0.219727 13.0078C-0.0731504 12.7149 -0.0731067 12.2401 0.219727 11.9472C0.512625 11.6543 0.987375 11.6543 1.28027 11.9472L4.77246 15.4394V2.56049L1.28027 6.05267C0.987388 6.34542 0.512588 6.34546 0.219727 6.05267C-0.0731295 5.75982 -0.0730437 5.28504 0.219727 4.99213L4.99219 0.219666Z" fill="#0059FF"/>
+            </svg>
+          </div>
+          <div className='mt-16 flex flex-col gap-32'></div>
+        </div>
+        <div className=''>
+          {projects.map((project) => (
+            <ProjectCard key={project.slug} project={project} />
+          ))}
+        </div>
+      </div>
+
+
+    </section>
   );
 }
