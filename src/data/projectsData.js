@@ -41,8 +41,9 @@ const projects = [
     id: 3,
     title: "Another Project",
     slug: "another-project",
-    description: "Description of another project...",
-    category: "Web Dev",
+    overallCaption: "Description of another project...",
+    about: "Details about another project...",
+    category: ["Web Dev"],
     skills: {
       languages: ["JavaScript", "HTML", "CSS"],
       frameworks: ["React", "Node.js"],
@@ -52,15 +53,15 @@ const projects = [
     githubUrl: "...",
     liveUrl: "...",
     isFeatured: false,
-    about: "Details about another project...",
     team: ["Alice", "Bob", "Charlie"]
   },
   {
     id: 4,
     title: "Featured Project",
     slug: "featured-project",
-    description: "Description of the featured project...",
-    category: "Web Dev",
+    overallCaption: "Description of the featured project...",
+    about: "Details about the featured project...",
+    category: ["Web Dev"],
     skills: {
       languages: ["JavaScript", "HTML", "CSS"],
       frameworks: ["React", "Node.js"],
@@ -69,7 +70,6 @@ const projects = [
     date: { year: 2023, month: "March" },
     githubUrl: "...",
     liveUrl: "...",
-    about: "Details about the featured project...",
     isFeatured: true,
     team: ["Alice", "Bob", "Charlie"]
   },

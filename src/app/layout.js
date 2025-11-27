@@ -3,6 +3,7 @@ import Header from '../components/Header';
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 
+
 // Import Funnel Display (regular + bold) from Google Fonts via next/font
 const funnel = Funnel_Display({
   variable: '--font-funnel',
@@ -13,6 +14,9 @@ const funnel = Funnel_Display({
 export const metadata = {
   title: "Portfolio",
   description: "Portfolio de développeur web",
+  icons: {
+    icon: '/favicon.ico', // Chemin vers votre favicon
+  },
 };
 
 export default function RootLayout({ children }) {

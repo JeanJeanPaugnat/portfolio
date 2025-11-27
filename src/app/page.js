@@ -5,6 +5,7 @@ import { useRef, useEffect, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import projects from '../data/projectsData.js';
 import { ProjectTitle } from '../components/ProjectTitle.jsx';
+import Hero from '../components/Hero.jsx';
 
 // Scroll indicator component
 function ScrollIndicator() {
@@ -38,6 +39,7 @@ function ScrollIndicator() {
     </div>
   );
 }
+
 
 // Hero section component
 export function HomeHeader() {
@@ -167,6 +169,7 @@ export default function Home() {
     <main className="w-full overflow-x-hidden">
       <HomeHeader />
       <RecentProjects />
+      <Hero />
     </main>
   );
 }

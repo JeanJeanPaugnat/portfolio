@@ -2,6 +2,9 @@
 
 import React from 'react';
 
+// composant menu burger
+
+
 export function NavBar() {
   return (
     <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
