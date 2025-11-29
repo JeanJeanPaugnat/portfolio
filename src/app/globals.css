@@ -2,8 +2,8 @@
 
 :root {
   /* Couleurs principales du thème */
-  --background: #ffffff;     /* Blanc pour les arrière-plans principaux */
-  --foreground: #171717;     /* Noir foncé pour les textes et backgrounds */
+  --foreground: #ffffff;     /* Blanc pour les arrière-plans principaux */
+  --background: #171717;     /* Noir foncé pour les textes et backgrounds */
   
   /* Couleurs d'accent */
   --blue-primary: #0059FF;   /* Bleu principal pour les CTAs */

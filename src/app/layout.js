@@ -1,5 +1,6 @@
 import { Funnel_Display } from "next/font/google";
 import Header from '../components/Header';
+import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 
@@ -22,9 +23,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${funnel.variable} antialiased`}>
-        <Header /> {/* Le Header sera visible sur toutes les pages */}
-        <div className="pt-16">
+      <body className={`${funnel.variable} antialiased`} style={{ backgroundColor: "var(--foreground)" }}>
+        <Navbar />
+        
+        <div className="pt-30">
           {children}
           </div>
         <Footer />

@@ -4,126 +4,150 @@ import { motion } from "framer-motion";
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 
 export default function Hero() {
-  // --- CONFIGURATION DES ANIMATIONS (Inchangée) ---
-  // L'effet de cascade pour l'apparition des éléments
+  // --- ANIMATIONS ---
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.2, // Délai entre chaque élément
-        delayChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
   };
 
-  // L'animation individuelle de chaque élément (glissement vers le haut)
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }, // Easing doux
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     },
   };
 
   return (
-    // Changement ici : bg-white et text-black
-    <section className="relative min-h-[90vh] flex items-center justify-center bg-white text-black selection:bg-blue-100 selection:text-blue-900 overflow-hidden pt-20 pb-10">
+    // 1. WRAPPER EXTERNE (Fond blanc ou noir selon ton site, ici blanc pour le contraste)
+    <section className=" w-full flex items-center justify-center p-4 md:px-6 bg-white">
       
-      {/* Fond subtil optionnel pour le light mode (tu peux le retirer si tu veux du blanc pur) */}
-      <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem] opacity-40"></div>
-
-      <div className="container mx-auto px-6 z-10 relative">
-        <motion.div
+      {/* 2. LA CARTE "IOS STYLE" (Le gros bloc bleu) */}
+      <motion.div 
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative w-full min-h-[85vh] flex flex-col justify-between overflow-hidden rounded-[40px] bg-gradient-to-br from-[#0055FF] via-[#0540c7] to-[#0a142f] text-white p-8 md:p-12 "
+      >
+        
+        {/* --- LIGNE DU HAUT (Top Row) --- */}
+        <motion.div 
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="max-w-4xl mx-auto text-center flex flex-col items-center"
+          className="flex flex-col md:flex-row justify-between items-start md:items-center text-sm md:text-base font-medium tracking-wide opacity-90"
         >
-          
-          {/* 1. LE BADGE (Adapté au light mode avec animation du point vert) */}
-          <motion.div variants={itemVariants} className="mb-8">
-            <span className="inline-flex items-center px-4 py-2 rounded-full border border-neutral-300 bg-white text-sm font-medium text-neutral-700 shadow-sm">
-              {/* Le point vert qui pulse */}
-              <span className="relative flex h-2.5 w-2.5 mr-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
-              </span>
-              Available For Internship • April 2026
+          {/* Status (gauche) */}
+          <motion.div variants={itemVariants} className="flex items-center gap-3 mb-4 md:mb-0">
+            <span className="relative flex h-3 w-3">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500 border border-green-300/50"></span>
             </span>
+            <span>Available For Internship</span>
           </motion.div>
 
-          {/* 2. LE TITRE PRINCIPAL (H1) - Serif et Italique */}
-          {/* Note: J'utilise 'font-serif'. Assure-toi que ton tailwind.config.js a une bonne police serif configurée, ou cela utilisera celle par défaut du navigateur (Times New Roman) */}
+          {/* Location (droite) */}
+          <motion.div variants={itemVariants}>
+            Based In Limoges, FR
+          </motion.div>
+        </motion.div>
+
+
+        {/* --- CONTENU CENTRAL (Titre) --- */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col justify-center flex-grow py-12 md:py-0"
+        >
+          {/* H1 Serif Italic */}
           <motion.h1 
             variants={itemVariants} 
-            className="text-5xl md:text-7xl font-serif italic font-medium tracking-tight mb-8 text-black leading-[1.1]"
+            className="font-serif italic text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-8"
           >
-            BUILDING DIGITAL SOLUTIONS <br className="hidden md:block" />
-            WHERE DESIGN MEETS CODE
+            BUILDING DIGITAL SOLUTIONS <br />
+            WHERE DESIGN MEETS CODE.
           </motion.h1>
 
-          {/* 3. LE SOUS-TITRE (P) - Sans-serif */}
+          {/* Description Sans-Serif */}
           <motion.p 
             variants={itemVariants} 
-            className="text-lg md:text-xl text-neutral-600 mb-12 max-w-2xl leading-relaxed font-sans"
+            className="font-sans text-lg md:text-xl text-blue-100 max-w-2xl leading-relaxed"
           >
-            Hi, I’m Jean Paugnat. MMI Student At IUT Limoges And Developer. 
+            Hi, I’m Jean Paugnat. MMI Student At IUT Limoges And Developer.<br className="hidden md:block" />
             I Transform Creative Concepts Into Performant And Interactive Web Applications.
           </motion.p>
+        </motion.div>
 
-          {/* 4. LES BOUTONS (CTA) */}
-          <motion.div 
-            variants={itemVariants} 
-            className="flex flex-col sm:flex-row items-center justify-center gap-5 w-full sm:w-auto"
-          >
-            {/* Bouton Bleu "View My Work" avec Flèche */}
-            <a 
+
+        {/* --- LIGNE DU BAS (Bottom Row) --- */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col md:flex-row items-end justify-between gap-8"
+        >
+          
+          {/* BOUTONS (Gauche) - Style "IOS" angles arrondis */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
+            
+            {/* Bouton Bleu électrique (plus clair que le fond) */}
+            <motion.a 
+              variants={itemVariants}
               href="#projects" 
-              className="group relative inline-flex h-12 w-full sm:w-auto items-center justify-center overflow-hidden rounded-md bg-blue-600 px-8 font-medium text-white transition-all duration-300 hover:bg-blue-700 hover:scale-[1.02] shadow-md hover:shadow-lg"
+              className="group flex items-center justify-center gap-3 px-8 py-4 bg-[#2563EB] hover:bg-[#3B82F6] text-white rounded-2xl font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-blue-900/30"
             >
-              <span>View My Work</span>
-              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-            </a>
+              View My Work
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+            </motion.a>
 
-            {/* Bouton "Download CV" avec Icône */}
-            <a 
+            {/* Bouton Outline (Bordure) */}
+            <motion.a 
+              variants={itemVariants}
               href="/cv.pdf" 
               download 
-              className="group inline-flex h-12 w-full sm:w-auto items-center justify-center rounded-md border-2 border-neutral-900 bg-transparent px-8 font-medium text-neutral-900 transition-all duration-300 hover:bg-neutral-100"
+              className="group flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/30 hover:bg-white/10 text-white rounded-2xl font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02]"
             >
-              <span>Download CV</span>
-              <Download className="ml-2 h-4 w-4 transition-transform group-hover:-translate-y-1" />
-            </a>
-          </motion.div>
+              Download CV
+              <Download className="w-5 h-5 transition-transform group-hover:-translate-y-1" />
+            </motion.a>
 
-          {/* 5. LE FOOTER (Réseaux et Localisation) */}
+          </div>
+
+          {/* SOCIALS (Droite) */}
           <motion.div 
-            variants={itemVariants} 
-            className="mt-20 flex flex-col md:flex-row items-center justify-center gap-16 w-full max-w-3xl border-t border-neutral-200 pt-8 text-neutral-600"
+            variants={itemVariants}
+            className="flex items-center gap-5 text-white/80 w-full md:w-auto justify-start md:justify-end"
           >
-            {/* Partie Gauche : Liens Sociaux avec Icônes */}
-            <div className="flex items-center gap-6 mb-4 md:mb-0">
-              <a href="https://github.com/tonprofil" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-black transition-colors group">
-                <Github className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span className="font-medium">GitHub</span>
-              </a>
-              <a href="https://linkedin.com/in/tonprofil" target="_blank" rel="noreferrer" className="flex items-center gap-2 hover:text-blue-600 transition-colors group">
-                <Linkedin className="h-5 w-5 group-hover:scale-110 transition-transform" />
-                <span className="font-medium">LinkedIn</span>
-              </a>
-            </div>
-            <div className="hidden md:block h-4 w-px bg-neutral-300 mx-2"></div>
+            <a 
+              href="https://github.com/tonprofil" 
+              target="_blank" 
+              className="hover:text-white transition-colors flex items-center gap-2 group"
+            >
+              <Github className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <span className="font-medium">GitHub</span>
+            </a>
 
-            {/* Partie Droite : Localisation */}
-            <div className="font-medium flex items-center">
-              Based In Limoges, FR
-            </div>
+            {/* Séparateur Vertical */}
+            <div className="h-5 w-px bg-white/30"></div>
+
+            <a 
+              href="https://linkedin.com/in/tonprofil" 
+              target="_blank" 
+              className="hover:text-white transition-colors flex items-center gap-2 group"
+            >
+              <Linkedin className="w-5 h-5 group-hover:scale-110 transition-transform" />
+              <span className="font-medium">LinkedIn</span>
+            </a>
           </motion.div>
 
         </motion.div>
-      </div>
+
+      </motion.div>
     </section>
   );
 }
