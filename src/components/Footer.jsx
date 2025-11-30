@@ -1,125 +1,123 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { Download, ArrowRight, Linkedin, Github, Mail } from 'lucide-react';
+import ScrollName from './ScrollName'; // Assuming this component exists based on your code
 
-// Footer scroll text component
-function FooterScrollText() {
-  const targetRef = useRef(null);
-  const [isClient, setIsClient] = useState(false);
-
-  // Ensure component is hydrated on client side
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  // Capturer le scroll progress pendant que l'élément est dans la vue
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ["start end", "end start"]
-  });
-
-  // Transformer le scroll vertical en mouvement horizontal
-  // Le texte se déplace de droite à gauche pendant le scroll
-  const x = useTransform(scrollYProgress, [0, 1], ["30%", "-30%"]);
-
-  // Render static version during SSR, animated version after hydration
-  if (!isClient) {
-    return (
-      <section 
-        ref={targetRef}
-        className="py-8 sm:py-12 md:py-16 flex justify-center overflow-hidden px-4 relative"
-      >
-        <h3 
-          className="font-black whitespace-nowrap leading-[0.2] sm:leading-[0.3] text-[clamp(3rem,15vw,20rem)] sm:text-[clamp(5rem,20vw,25rem)] md:text-[clamp(8rem,25vw,30rem)] lg:text-[clamp(12rem,30vw,35rem)]"
-        >
-          JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT /
-        </h3>
-      </section>
-    );
-  }
-
-  return (
-    <section 
-      ref={targetRef}
-      className="py-8 sm:py-12 md:py-16 flex justify-center overflow-hidden px-4 relative"
-    >
-      <motion.h3 
-        style={{ x }}
-        className="font-black whitespace-nowrap leading-[0.2] sm:leading-[0.3] text-[clamp(3rem,15vw,20rem)] sm:text-[clamp(5rem,20vw,25rem)] md:text-[clamp(8rem,25vw,30rem)] lg:text-[clamp(12rem,30vw,35rem)]"
-      >
-        JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT / JEAN PAUGNAT /
-      </motion.h3>
-    </section>
-  );
-}
-
-function DownloaderCV() {   
-    return (
-        <button className="flex rounded-lg border-2 py-2 sm:py-2.5 px-3 border-[#0059ff] items-center gap-2 sm:gap-3 font-serif italic font-bold uppercase text-sm sm:text-base md:text-xl lg:text-2xl hover:bg-[#0059ff] hover:text-white transition-colors group">
-            <a href='./CV-english-nov-25.pdf' target='_blank' className="text-xs sm:text-sm md:text-base lg:text-lg">Curriculum Vitae</a>
-            <svg className="w-5 h-5 sm:w-6 sm:h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
-              <path d="M21 22H3V2H15V4H17V6H19V8H21V22ZM17 6H15V8H17V6ZM5 4V20H19V10H13V4H5ZM13 16H7V18H13V16ZM7 12H17V14H7V12ZM11 8H7V10H11V8Z" className="fill-current"/>
-            </svg>
-          </button>
-    );
-}
+// Social Data for cleaner mapping
+const socialLinks = [
+  { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jeanpaugnat/', icon: Linkedin },
+  { name: 'Github', href: 'https://github.com/JeanJeanPaugnat', icon: Github },
+  { name: 'Email', href: 'mailto:your@email.com', icon: Mail },
+];
 
 export function Footer() {
   return (
-    <footer className="bg-white text-black w-full mt-8 sm:mt-16">
-      {/* Call to Action Section */}
-      <div className="flex w-full justify-center md:justify-end py-8 sm:py-12 md:py-14 px-4 sm:px-6 md:px-8">
-        <h2 className="text-black text-2xl sm:text-3xl md:text-4xl font-serif italic text-center md:text-right max-w-md">
-          Let's design your goals together!
-        </h2>
+    <footer className="bg-white text-black w-full mt-16">
+      
+      {/* 1. Call to Action Section */}
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 pt-16 pb-8">
+        <div className="flex justify-center md:justify-end">
+          <h2 className="text-3xl md:text-5xl font-serif italic text-center md:text-right max-w-lg leading-tight">
+            Let's design your goals together!
+          </h2>
+        </div>
       </div>
       
-      {/* Navigation Links Section */}
-      <div className="flex flex-col md:flex-row w-full justify-around gap-8 md:gap-0 py-6 sm:py-8 px-4 sm:px-6 md:px-8">
-        {/* Primary Navigation */}
-        <div className="flex flex-col gap-4 sm:gap-7 items-center md:items-start">
-          <h4 className="text-xl sm:text-2xl font-semibold">Primary</h4>
-          <ul className="flex flex-col gap-3 sm:gap-4 text-center md:text-left">
-            <li><a href="/" className="hover:text-[#0059ff] transition-colors">Home</a></li>
-            <li><a href="/projets" className="hover:text-[#0059ff] transition-colors">Work</a></li>
-            <li><a href="/about" className="hover:text-[#0059ff] transition-colors">About</a></li>
-            <li><a href="/contact" className="hover:text-[#0059ff] transition-colors">Let's talk</a></li>
-          </ul>
-        </div>
+      {/* 2. Main Navigation Grid */}
+      <div className="w-full max-w-[1400px] mx-auto px-6 md:px-12 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8">
+          
+          {/* Column 1: Primary Nav */}
+          <div className="flex flex-col items-center md:items-start space-y-6">
+            <h4 className=" font-sans text-3xl font-normal">Menu</h4>
+            <ul className="flex flex-col items-center md:items-start gap-3 font-sans font-medium text-neutral-600">
+              {['Home', 'Work', 'About', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    href={item === 'Home' ? '/' : item === 'Work' ? '/projets' : `/${item.toLowerCase()}`} 
+                    className="hover:text-[#0059ff] transition-colors relative group"
+                  >
+                    {item}
+                    {/* Animated Underline */}
+                    <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#0059ff] transition-all duration-300 group-hover:w-full"></span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         
-        {/* Contact Links */}
-        <div className="flex flex-col gap-4 sm:gap-7 items-center md:items-start">
-          <h4 className="text-xl sm:text-2xl font-semibold">Contact</h4>
-          <ul className="flex flex-col gap-3 sm:gap-4 text-center md:text-left">
-            <li><a href="#" className="hover:text-[#0059ff] transition-colors">LINKEDIN</a></li>
-            <li><a href="#" className="hover:text-[#0059ff] transition-colors">INSTAGRAM</a></li>
-            <li><a href="#" className="hover:text-[#0059ff] transition-colors">EMAIL</a></li>
-          </ul>
-        </div>
+          {/* Column 2: Socials */}
+          <div className="flex flex-col items-center md:items-start space-y-6">
+            <h4 className=" font-sans text-3xl font-normal">Connect</h4>
+            <ul className="flex flex-col items-center md:items-start gap-3 font-sans font-medium text-neutral-600">
+              {socialLinks.map((social) => (
+                <li key={social.name}>
+                  <a 
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 hover:text-[#0059ff] transition-colors group"
+                  >
+                    <social.icon size={18} className="group-hover:scale-110 transition-transform" />
+                    <span>{social.name}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         
-        {/* Action Buttons */}
-        <div className="flex flex-col gap-4 sm:gap-7 items-center md:items-start">
-            <DownloaderCV />
-          <Link href="/contact">
-          <button className="flex rounded-lg py-2 sm:py-2.5 px-3 bg-[#0059ff] items-center gap-2 sm:gap-2.5 font-serif italic text-white font-bold uppercase text-sm sm:text-base md:text-xl lg:text-2xl hover:bg-[#0047cc] transition-colors group">
-            <span className="text-xs sm:text-sm md:text-base lg:text-lg">Let's work together</span>
-            <svg className="w-6 h-6 sm:w-7 sm:h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="none">
-              <path d="M5 13.75L5 16.25L20 16.25L20 18.75L22.5 18.75L22.5 16.25L25 16.25L25 13.75L22.5 13.75L22.5 11.25L20 11.25L20 13.75L5 13.75ZM17.5 8.75L20 8.75L20 11.25L17.5 11.25L17.5 8.75ZM17.5 8.75L15 8.75L15 6.25L17.5 6.25L17.5 8.75ZM17.5 21.25L20 21.25L20 18.75L17.5 18.75L17.5 21.25ZM17.5 21.25L15 21.25L15 23.75L17.5 23.75L17.5 21.25Z" fill="white"/>
-            </svg>
-          </button>
+          {/* Column 3: Actions (Buttons) */}
+          <div className="flex flex-col items-center md:items-start gap-4">
+            
+            {/* CV Button (Outline Style) */}
+            <motion.a 
+              href='./CV-english-nov-25.pdf' 
+              target='_blank'
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="flex items-center justify-between w-full md:w-auto min-w-[200px] px-6 py-3 
+                         border-2 border-[#0059ff] rounded-lg 
+                         text-[#0059ff] hover:bg-[#0059ff] hover:text-white 
+                         transition-colors duration-300 group cursor-pointer"
+            >
+              <span className="font-sans font-bold uppercase tracking-wide text-sm">Download CV</span>
+              <Download size={20} className="group-hover:translate-y-1 transition-transform" />
+            </motion.a>
+
+            {/* Contact Button (Solid Style) */}
+            <Link href="/contact" className="w-full md:w-auto">
+              <motion.button 
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-between w-full md:w-auto min-w-[200px] px-6 py-3 
+                           bg-[#0059ff] rounded-lg 
+                           text-white hover:bg-[#0046cc] 
+                           transition-colors duration-300 group shadow-lg shadow-blue-500/20"
+              >
+                <span className="font-sans font-bold uppercase tracking-wide text-sm">Let's Work Together</span>
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
             </Link>
+
+          </div>
         </div>
       </div>
       
-      {/* Large Name Section with Scroll Animation */}
-      <FooterScrollText />
+      {/* 3. Large Name Section */}
+      <div className="w-full">
+         <ScrollName />
+      </div>
       
-      {/* Copyright Bar */}
-      <div className="bg-black flex flex-col sm:flex-row font-sans font-normal items-center justify-between px-4 sm:px-8 md:px-12 py-3 sm:py-2 text-xs sm:text-sm text-white gap-2 sm:gap-0">
-        <p>©JeanPaugnat</p>
-        <p>All rights reserved</p>
+      {/* 4. Copyright Bar */}
+      <div className="bg-black text-white py-4">
+        <div className=" mx-auto px-6 md:px-12 flex flex-col sm:flex-row items-center justify-between gap-2 font-sans text-xs text-neutral-400">
+          <p>© {new Date().getFullYear()} Jean Paugnat</p>
+          <div className="flex gap-4">
+            <span>All rights reserved</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

@@ -5,7 +5,7 @@ const projects = [
     id: 1,
     title: "Site Portfolio MMI",
     slug: "portfolio-mmi", // Important pour l'URL
-    overallCaption: "Mon site personnel pour...",
+    overallCaption: "Developpement of a click & collect website following the design system of Louis Vuitton Brand. It connects the customer to the update of the database.",
     about: "Ce portfolio a été conçu et développé dans le cadre de mon cursus MMI afin de présenter mes compétences, projets et expériences professionnelles. L'objectif principal était de créer une plateforme à la fois esthétique et fonctionnelle, reflétant mon identité en tant que développeur web. J'ai utilisé des technologies modernes telles que React pour le front-end et Next.js pour le rendu côté serveur, assurant ainsi une performance optimale et une excellente expérience utilisateur. Le design minimaliste met en avant le contenu tout en offrant une navigation fluide et intuitive.",
     category: ["Web Dev"],
     skills: {
@@ -13,6 +13,7 @@ const projects = [
       frameworks: ["React", "Node.js"],
       tools: ["Git", "VSCode"]
     },
+    img: { imgPrincipal: "/images/projects/ecommerce-louis-vuitton-overview.png", imgSecondaire: "/images/projects/portfolio-mmi/second-image.png"},
     date: { year: 2025, month: "November" },
     githubUrl: null,
     liveUrl: null,
@@ -31,6 +32,7 @@ const projects = [
       frameworks: ["tailwind", "Vue.js"],
       tools: ["Git", "Figma", "VS Code", "phpmyadmin"]
     },
+    img: { imgPrincipal: "/images/projects/ecommerce-louis-vuitton/ecommerce-louis-vuitton-overview.png", imgSecondaire: "/images/projects/ecommerce-louis-vuitton/second-image.png"},
     date: { year: 2025, month: "October" },
     githubUrl: "https://github.com/JeanJeanPaugnat/SAE301",
     liveUrl: null,
@@ -49,6 +51,7 @@ const projects = [
       frameworks: ["React", "Node.js"],
       tools: ["Git"]
     },
+    img: { imgPrincipal: "/images/projects/another-project/another-project-overview.png", imgSecondaire: "/images/projects/another-project/second-image.png"},
     date: { year: 2023, month: "March" },
     githubUrl: "...",
     liveUrl: "...",
@@ -67,6 +70,7 @@ const projects = [
       frameworks: ["React", "Node.js"],
       tools: ["Git", "Figma"]
     },
+    img: { imgPrincipal: "/images/projects/featured-project/featured-project-overview.png", imgSecondaire: "/images/projects/featured-project/second-image.png"},
     date: { year: 2023, month: "March" },
     githubUrl: "...",
     liveUrl: "...",

@@ -2,16 +2,17 @@
 
 import Link from 'next/link';
 import projects from '../data/projectsData.js';
-import { ProjectTitle } from '../components/ProjectTitle.jsx';
+// import { ProjectTitle } from '../components/ProjectItemTitle.jsx';
 import Hero from '../components/Hero.jsx';
+import RecentProjects from '../components/RecentProjects.jsx';
 
 // Import des nouveaux composants "propres"
 import ScrollName from '../components/ScrollName.jsx';
 import ScrollIndicator from '../components/ScrollIndicator.jsx';
 
-// --- Composant Local RecentProjects ---
-// (Tu peux aussi le déplacer dans son propre fichier si tu veux)
-function RecentProjects() {
+
+
+function RecenxxxtProjects() {
   const sortedProjects = [...projects].sort((a, b) => b.year - a.year);
   const displayedProjects = sortedProjects.slice(0, 3);
 
@@ -68,9 +69,10 @@ export default function Home() {
         <ScrollIndicator />
         <ScrollName />
       </section>
+      <RecentProjects />
 
       {/* 3. Projets */}
-      <RecentProjects />
+      {/* <RecentProjects /> */}
     </main>
   );
 }
