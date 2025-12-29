@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { motion } from "framer-motion";
+import Link from 'next/link';
 import { ArrowRight, Download, Github, Linkedin } from "lucide-react";
 
 export default function Hero() {
@@ -96,20 +97,23 @@ export default function Hero() {
           <div className="flex flex-col sm:flex-row gap-4 w-full md:w-auto">
             
             {/* Bouton Bleu électrique (plus clair que le fond) */}
+
             <motion.a 
+              href="/projets"
               variants={itemVariants}
-              href="#projects" 
               className="group flex items-center justify-center gap-3 px-8 py-4 bg-[#2563EB] hover:bg-[#3B82F6] text-white rounded-2xl font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-blue-900/30"
             >
-              View My Work
+               View My Work
               <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                          
+            
             </motion.a>
 
             {/* Bouton Outline (Bordure) */}
             <motion.a 
               variants={itemVariants}
-              href="/cv.pdf" 
-              download 
+              href="/CV-Jean-PAUGNAT-dec-2025.pdf"
+              target="_blank" 
               className="group flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/30 hover:bg-white/10 text-white rounded-2xl font-bold uppercase tracking-wider transition-all duration-300 hover:scale-[1.02]"
             >
               Download CV
@@ -124,7 +128,7 @@ export default function Hero() {
             className="flex items-center gap-5 text-white/80 w-full md:w-auto justify-start md:justify-end"
           >
             <a 
-              href="https://github.com/tonprofil" 
+              href="https://github.com/JeanJeanPaugnat" 
               target="_blank" 
               className="hover:text-white transition-colors flex items-center gap-2 group"
             >

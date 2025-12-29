@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react"; // Import de l'icône
 import projects from '@/data/projectsData'; // Assure-toi du bon chemin
 import ProjectItemTitle from "./ProjectItemTitle"; // Ton composant enfant
+import Link from "next/link";
 
 export default function RecentProjects() {
   // 1. On prend seulement les 3 premiers projets
@@ -21,15 +22,17 @@ export default function RecentProjects() {
           </h2>
           
           {/* Bouton SEE ALL avec Icône */}
-          <motion.button
+          <Link href="/projets">
+          <motion.span
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="group flex items-center gap-2 px-6 py-3 bg-[#0055FF] rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-blue-600 transition-colors"
+            className="group flex items-center gap-2 px-6 py-3 bg-[#0055FF] cursor-pointer rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-blue-600 transition-colors"
           >
             See All
             {/* L'icône bouge un peu au survol grâce à group-hover */}
             <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </motion.button>
+          </motion.span>
+          </Link>
         </div>
 
         {/* LISTE DES PROJETS */}

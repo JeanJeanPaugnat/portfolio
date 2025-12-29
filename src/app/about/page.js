@@ -51,7 +51,7 @@ const education = [
   {
     id: 1,
     school: "Université de Limoges",
-    logo: "/images/limoges-logo.png", // Mets ton logo ici
+    logo: "/images/limoges-logo.png", 
     dates: "2023 - Now",
     location: "IUT du Limousin, FR",
     degree: "Bachelor",
@@ -62,12 +62,12 @@ const education = [
   {
     id: 2,
     school: "Southern Utah University",
-    logo: "/images/suu-logo.png", // Mets ton logo ici
+    logo: "/images/suu-logo.png", 
     dates: "2024 - 2025",
     location: "Cedar City, Utah, USA",
     degree: "Gap Year",
     title: "Bachelor in Computer Science",
-    description: "International exchange semester focused on Computer Science and professional English. Full cultural immersion.",
+    description: "International exchange year focused on Computer Science and professional English. Full cultural immersion.",
     style: "white" // Style carte blanche
   }
 ];

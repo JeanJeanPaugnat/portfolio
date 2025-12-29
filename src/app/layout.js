@@ -13,8 +13,8 @@ const funnel = Funnel_Display({
 });
 
 export const metadata = {
-  title: "Portfolio",
-  description: "Portfolio de développeur web",
+  title: "Portfolio | Jean Paugnat - Student & Developer Web",
+  description: "Web developer portfolio of Jean Paugnat, showcasing projects, skills, and experience in web development.",
   icons: {
     icon: '/favicon.ico', // Chemin vers votre favicon
   },
