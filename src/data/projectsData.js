@@ -42,7 +42,7 @@ const projects = [
   {
     id: 3,
     title: "Another Project",
-    slug: "another-project",
+    slug: "SkechtShop",
     overallCaption: "Description of another project...",
     about: "Details about another project...",
     category: ["Web Dev"],
